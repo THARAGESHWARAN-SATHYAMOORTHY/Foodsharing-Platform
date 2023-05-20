@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import axios from 'axios';
 
 function Home() {
@@ -129,13 +129,15 @@ function App() {
           </ul>
         </nav>
 
-        <Route path="/" exact component={Home} />
-        <Route path="/users" exact component={Users} />
-        <Route path="/users/create" component={CreateUser} />
-        <Route path="/fooditems" exact component={FoodItems} />
-        <Route path="/fooditems/create" component={CreateFoodItem} />
-        <Route path="/donations" exact component={Donations} />
-        <Route path="/donations/create" component={CreateDonation} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/users/create" element={<CreateUser />} />
+          <Route path="/fooditems" element={<FoodItems />} />
+          <Route path="/fooditems/create" element={<CreateFoodItem />} />
+          <Route path="/donations" element={<Donations />} />
+          <Route path="/donations/create" element={<CreateDonation />} />
+        </Routes>
       </div>
     </Router>
   );
