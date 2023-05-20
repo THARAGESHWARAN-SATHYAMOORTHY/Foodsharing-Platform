@@ -11,8 +11,11 @@ function Login({ setIsLoggedIn }) {
     const handleLogin = (e) => {
         e.preventDefault();
 
+        const usernamePattern = 'admin';
+        const passwordPattern = '12345';
+
         // Check if the entered username and password are correct
-        if (username === '21pc37' && password === '12345') {
+        if (username === usernamePattern && password === passwordPattern) {
             // Set the isLoggedIn state to true
             setIsLoggedIn(true);
             // Save the authentication token to localStorage or session storage
