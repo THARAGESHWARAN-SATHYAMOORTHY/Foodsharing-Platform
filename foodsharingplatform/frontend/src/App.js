@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import axios from 'axios';
 import Login from './Login';
 import Signup from './Signup';
+import Donation from './Donation';
+import FoodItems from './FoodItems';
 
 
 
@@ -47,36 +49,6 @@ function CreateUser() {
   );
 }
 
-function FoodItems() {
-  const [foodItems, setFoodItems] = useState([]);
-
-  useEffect(() => {
-    axios.get('/api/fooditems/')
-      .then((response) => setFoodItems(response.data));
-  }, []);
-
-  return (
-    <div>
-      <h2>Food Items</h2>
-      <ul>
-        {foodItems.map((foodItem) => (
-          <li key={foodItem.id}>
-            <strong>Name:</strong> {foodItem.name}<br />
-            <strong>Description:</strong> {foodItem.description}<br />
-            <strong>Type:</strong> {foodItem.type}<br />
-            <strong>Expiry Date:</strong> {foodItem.expiryDate}<br />
-            <strong>Manufacture Date:</strong> {foodItem.manufactureDate}<br />
-            <strong>Allergy Alerts:</strong> {foodItem.allergyAlerts}<br />
-            <strong>Location:</strong> {foodItem.location}<br />
-            <strong>Contact Details:</strong> {foodItem.contactDetails}<br />
-          </li>
-        ))}
-      </ul>
-      <Link to="/fooditems/create">Create Food Item</Link>
-    </div>
-  );
-}
-
 
 function CreateFoodItem() {
   return (
@@ -88,38 +60,6 @@ function CreateFoodItem() {
 }
 
 
-
-function Donations() {
-  const [donations, setDonations] = useState([]);
-
-  useEffect(() => {
-    axios.get('/api/donations/')
-      .then((response) => setDonations(response.data));
-  }, []);
-
-  return (
-    <div>
-      <h2>Donations</h2>
-      <ul>
-        {donations.map((donation) => (
-          <li key={donation.id}>
-            {donation.donor.name} donated {donation.food_item.name} ({donation.quantity})
-          </li>
-        ))}
-      </ul>
-      <Link to="/donations/create">Create Donation</Link>
-    </div>
-  );
-}
-
-function CreateDonation() {
-  return (
-    <div>
-      <h2>Create Donation</h2>
-      <p>Form to create a new donation goes here</p>
-    </div>
-  );
-}
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -174,8 +114,7 @@ function App() {
           <Route path="/fooditems" component={FoodItems} />
           <Route path="/fooditems/create" element={<CreateFoodItem />} />
           <Route path="/fooditems/create" component={CreateFoodItem} />
-          <Route path="/donations" element={<Donations />} />
-          <Route path="/donations/create" element={<CreateDonation />} />
+          <Route path="/donation" component={Donation} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
