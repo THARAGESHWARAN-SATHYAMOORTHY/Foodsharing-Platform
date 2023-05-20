@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import axios from 'axios';
+import Login from './Login';
+import Signup from './Signup';
+
 
 function Home() {
   return (
@@ -108,6 +111,19 @@ function CreateDonation() {
 }
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
     <Router>
       <div>
@@ -117,15 +133,26 @@ function App() {
             <li>
               <Link to="/">Home</Link>
             </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-            <li>
-              <Link to="/fooditems">Food Items</Link>
-            </li>
-            <li>
-              <Link to="/donations">Donations</Link>
-            </li>
+            {isLoggedIn ? (
+              <>
+                <li>
+                  <Link to="/users">Users</Link>
+                </li>
+                <li>
+                  <Link to="/fooditems">Food Items</Link>
+                </li>
+                <li>
+                  <Link to="/donations">Donations</Link>
+                </li>
+                <li>
+                  <button onClick={handleLogout}>Logout</button>
+                </li>
+              </>
+            ) : (
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            )}
           </ul>
         </nav>
 
@@ -137,6 +164,8 @@ function App() {
           <Route path="/fooditems/create" element={<CreateFoodItem />} />
           <Route path="/donations" element={<Donations />} />
           <Route path="/donations/create" element={<CreateDonation />} />
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
     </Router>
