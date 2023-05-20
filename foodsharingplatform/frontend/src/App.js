@@ -5,8 +5,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Donation from './Donation';
 import FoodItems from './FoodItems';
-
-
+import CreateFoodItem from './CreateFoodItem';
 
 function Home() {
   return (
@@ -48,18 +47,6 @@ function CreateUser() {
     </div>
   );
 }
-
-
-function CreateFoodItem() {
-  return (
-    <div>
-      <h2>Create Food Item</h2>
-      <p>Form to create a new food item goes here</p>
-    </div>
-  );
-}
-
-
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -109,12 +96,11 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/users/*" element={<Users />} />
           <Route path="/users/create" element={<CreateUser />} />
-          <Route path="/fooditems" component={FoodItems} />
+          <Route path="/fooditems/" element={<FoodItems />} />
           <Route path="/fooditems/create" element={<CreateFoodItem />} />
-          <Route path="/fooditems/create" component={CreateFoodItem} />
-          <Route path="/donation" component={Donation} />
+          <Route path="/donations" element={<Donation />} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
