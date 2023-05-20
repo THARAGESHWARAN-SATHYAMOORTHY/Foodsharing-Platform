@@ -5,6 +5,7 @@ import Login from './Login';
 import Signup from './Signup';
 
 
+
 function Home() {
   return (
     <div>
@@ -60,7 +61,14 @@ function FoodItems() {
       <ul>
         {foodItems.map((foodItem) => (
           <li key={foodItem.id}>
-            {foodItem.name} - {foodItem.description}
+            <strong>Name:</strong> {foodItem.name}<br />
+            <strong>Description:</strong> {foodItem.description}<br />
+            <strong>Type:</strong> {foodItem.type}<br />
+            <strong>Expiry Date:</strong> {foodItem.expiryDate}<br />
+            <strong>Manufacture Date:</strong> {foodItem.manufactureDate}<br />
+            <strong>Allergy Alerts:</strong> {foodItem.allergyAlerts}<br />
+            <strong>Location:</strong> {foodItem.location}<br />
+            <strong>Contact Details:</strong> {foodItem.contactDetails}<br />
           </li>
         ))}
       </ul>
@@ -68,6 +76,7 @@ function FoodItems() {
     </div>
   );
 }
+
 
 function CreateFoodItem() {
   return (
@@ -77,6 +86,8 @@ function CreateFoodItem() {
     </div>
   );
 }
+
+
 
 function Donations() {
   const [donations, setDonations] = useState([]);
@@ -162,6 +173,7 @@ function App() {
           <Route path="/users/create" element={<CreateUser />} />
           <Route path="/fooditems" element={<FoodItems />} />
           <Route path="/fooditems/create" element={<CreateFoodItem />} />
+          <Route path="/fooditems/create" component={CreateFoodItem} />
           <Route path="/donations" element={<Donations />} />
           <Route path="/donations/create" element={<CreateDonation />} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
