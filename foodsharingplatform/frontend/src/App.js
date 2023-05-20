@@ -171,7 +171,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/create" element={<CreateUser />} />
-          <Route path="/fooditems" element={<FoodItems />} />
+          <Route path="/fooditems" component={FoodItems} />
           <Route path="/fooditems/create" element={<CreateFoodItem />} />
           <Route path="/fooditems/create" component={CreateFoodItem} />
           <Route path="/donations" element={<Donations />} />
