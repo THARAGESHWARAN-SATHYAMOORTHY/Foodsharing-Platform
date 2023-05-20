@@ -5,16 +5,16 @@ body {
 }
 
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(253, 253, 253);
   width: 1260px;
-  height: 1080px;
+  height: 580px;
   background-size: 1260px 580px;
 }
 
 
 .header {
   text-align: center;
-  background-color: #66e0ed;
+  background-color: #27e9ff;
   padding: 20px;
 }
 
