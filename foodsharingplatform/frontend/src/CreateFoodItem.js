@@ -25,21 +25,20 @@ function CreateFoodItem() {
             contactDetails,
         };
 
-        axios.post('/frontend/fooditems', newFoodItem)
-            .then((response) => {
-                // Handle successful creation of food item
-                console.log('Food item created:', response.data);
+        axios.post('/api/fooditems/', newFoodItem).then((response) => {
+            // Handle successful creation of food item
+            console.log('Food item created:', response.data);
 
-                // Clear the form fields
-                setName('');
-                setDescription('');
-                setType('');
-                setExpiryDate('');
-                setManufactureDate('');
-                setAllergyAlerts('');
-                setLocation('');
-                setContactDetails('');
-            })
+            // Clear the form fields
+            setName('');
+            setDescription('');
+            setType('');
+            setExpiryDate('');
+            setManufactureDate('');
+            setAllergyAlerts('');
+            setLocation('');
+            setContactDetails('');
+        })
             .catch((error) => {
                 console.error('Error creating food item:', error);
             });

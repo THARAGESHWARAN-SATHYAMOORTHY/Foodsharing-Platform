@@ -21,7 +21,8 @@ function Users() {
 
   useEffect(() => {
     axios.get('/api/users/')
-      .then((response) => setUsers(response.data));
+      .then((response) => setUsers(response.data))
+      .catch((error) => console.error('Error fetching users:', error));
   }, []);
 
   return (
