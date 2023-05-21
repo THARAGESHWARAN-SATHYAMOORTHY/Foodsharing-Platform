@@ -10,6 +10,16 @@ form {
     margin-bottom: 10px;
     width: 300px;
   }
+
+  .contact-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .contact-container select {
+    margin-right: 5px;
+  }
+  
   
   form button {
     padding: 10px 20px;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
 import { useNavigate, Link } from 'react-router-dom';
 import './CreateFoodItem.css'; // Import the CSS file for table styling
 
@@ -70,6 +71,7 @@ function CreateFoodItem() {
             });
     };
 
+
     return (
         <div>
             <h2>Create Food Item</h2>
@@ -95,13 +97,14 @@ function CreateFoodItem() {
                 </div>
                 <div>
                     <label htmlFor="foodType">Food Type:</label>
-                    <input
-                        type="text"
-                        id="foodType"
-                        value={foodType}
-                        onChange={(e) => setFoodType(e.target.value)}
-                    />
+                    <input type="text" id="foodType" list="foodOptions" />
+                    <datalist id="foodOptions">
+                        <option value="Vegetarian"></option>
+                        <option value="Non-Vegetarian"></option>
+                        <option value="Veg"></option>
+                    </datalist>
                 </div>
+
                 <div>
                     <label htmlFor="allergyAlerts">Allergy Alerts:</label>
                     <input
@@ -114,7 +117,7 @@ function CreateFoodItem() {
                 <div>
                     <label htmlFor="expiryDate">Expiry Date:</label>
                     <input
-                        type="text"
+                        type="datetime-local"
                         id="expiryDate"
                         value={expiryDate}
                         onChange={(e) => setExpiryDate(e.target.value)}
@@ -122,12 +125,22 @@ function CreateFoodItem() {
                 </div>
                 <div>
                     <label htmlFor="contactNumber">Contact Number:</label>
-                    <input
-                        type="text"
-                        id="contactNumber"
-                        value={contactNumber}
-                        onChange={(e) => setContactNumber(e.target.value)}
-                    />
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <select style={{ marginRight: '4px', marginBottom: '10px' }}>
+                            <option value="+1">+1</option>
+                            <option value="+91">+91</option>
+                            <option value="+44">+44</option>
+                        </select>
+                        <input
+                            type="text"
+                            id="contactNumber"
+                            value={contactNumber}
+                            onChange={(e) => setContactNumber(e.target.value)}
+                            pattern="\d{10}"
+                            title="Please enter a 10-digit phone number"
+                            style={{ display: 'flex', alignItems: 'center', marginRight: '5px' }}
+                        />
+                    </div>
                 </div>
                 <div>
                     <label htmlFor="location">Location:</label>
