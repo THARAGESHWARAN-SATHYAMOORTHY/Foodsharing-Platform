@@ -1,71 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Donation() {
-    const [donationOptions, setDonationOptions] = useState([]);
-    const [selectedOption, setSelectedOption] = useState(null);
-    const [donationComplete, setDonationComplete] = useState(false);
+    const [donationAmount, setDonationAmount] = useState('');
+    const [cardNumber, setCardNumber] = useState('');
+    const [expiryDate, setExpiryDate] = useState('');
+    const [cvv, setCVV] = useState('');
+    const [donated, setDonated] = useState(false);
 
-    useEffect(() => {
-        // Fetch donation options from the server API
-        const fetchDonationOptions = async () => {
-            try {
-                const response = await fetch('/api/donation-options');
-                const data = await response.json();
-                setDonationOptions(data);
-            } catch (error) {
-                console.log('Error fetching donation options:', error);
-            }
-        };
-
-        fetchDonationOptions();
-    }, []);
-
-    const handleOptionChange = (option) => {
-        setSelectedOption(option);
+    const handleDonation = () => {
+        // Perform donation processing or API call here
+        // Simulating a donation by setting the 'donated' state to true
+        setDonated(true);
     };
 
-    const handleDonate = () => {
-        if (selectedOption) {
-            // Perform any necessary donation logic here
-            setDonationComplete(true);
-        }
+    const handleAmountChange = (event) => {
+        setDonationAmount(event.target.value);
     };
 
-    const handleBack = () => {
-        setDonationComplete(false);
-        setSelectedOption(null);
+    const handleCardNumberChange = (event) => {
+        setCardNumber(event.target.value);
+    };
+
+    const handleExpiryDateChange = (event) => {
+        setExpiryDate(event.target.value);
+    };
+
+    const handleCVVChange = (event) => {
+        setCVV(event.target.value);
     };
 
     return (
         <div>
-            {donationComplete ? (
+            <h2>Make a Donation</h2>
+            {donated ? (
                 <div>
-                    <h2>Thank You for Your Donation!</h2>
-                    <p>Your donation will help those in need.</p>
-                    <button onClick={handleBack}>Back</button>
+                    <p>Thank you for your generous donation!</p>
+                    <p>Your contribution helps those in need.</p>
+                    <Link to="/">Back to Home</Link>
                 </div>
             ) : (
                 <div>
-                    <h2>Make a Donation</h2>
                     <p>Please select a donation amount:</p>
-                    <ul>
-                        {donationOptions.map((option) => (
-                            <li key={option.id}>
-                                <input
-                                    type="radio"
-                                    id={`option-${option.id}`}
-                                    name="donationOption"
-                                    value={option.id}
-                                    checked={selectedOption === option}
-                                    onChange={() => handleOptionChange(option)}
-                                />
-                                <label htmlFor={`option-${option.id}`}>
-                                    {option.name} (${option.amount})
-                                </label>
-                            </li>
-                        ))}
-                    </ul>
-                    <button onClick={handleDonate}>Donate</button>
+                    <select value={donationAmount} onChange={handleAmountChange}>
+                        <option value="">Select amount</option>
+                        <option value="10">$10</option>
+                        <option value="20">$20</option>
+                        <option value="50">$50</option>
+                    </select>
+                    <p>Card Details:</p>
+                    <input type="text" placeholder="Card Number" value={cardNumber} onChange={handleCardNumberChange} />
+                    <input type="text" placeholder="Expiry Date" value={expiryDate} onChange={handleExpiryDateChange} />
+                    <input type="text" placeholder="CVV" value={cvv} onChange={handleCVVChange} />
+                    <button onClick={handleDonation}>Donate</button>
                 </div>
             )}
         </div>
