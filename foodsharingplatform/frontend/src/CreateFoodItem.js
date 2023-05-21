@@ -25,7 +25,7 @@ function CreateFoodItem() {
             contactDetails,
         };
 
-        axios.post('/api/fooditems', newFoodItem)
+        axios.post('/frontend/fooditems', newFoodItem)
             .then((response) => {
                 // Handle successful creation of food item
                 console.log('Food item created:', response.data);
