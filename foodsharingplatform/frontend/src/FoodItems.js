@@ -6,10 +6,15 @@ function FoodItems() {
     const [foodItems, setFoodItems] = useState([]);
 
     useEffect(() => {
-        axios.get('/api/fooditems/')
+        fetchFoodItems();
+    }, []);
+
+    const fetchFoodItems = () => {
+        axios
+            .get('/frontend/fooditems/')
             .then((response) => setFoodItems(response.data))
             .catch((error) => console.error('Error fetching food items:', error));
-    }, []);
+    };
 
     return (
         <div>
