@@ -9,7 +9,7 @@ app.use(cors());
 let foodItems = [];
 
 // Create a new food item
-app.post('/api/fooditems', (req, res) => {
+app.post('/api/fooditems/create', (req, res) => {
     const foodItemData = req.body;
     const foodItem = {
         id: foodItems.length + 1,
@@ -20,7 +20,7 @@ app.post('/api/fooditems', (req, res) => {
 });
 
 // Fetch all food items
-app.get('/api/fooditems', (_req, res) => {
+app.get('/api/fooditems/create', (_req, res) => {
     res.json(foodItems);
 });
 

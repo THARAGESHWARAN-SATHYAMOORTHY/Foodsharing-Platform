@@ -9,16 +9,18 @@ function Signup() {
     const handleSignup = (e) => {
         e.preventDefault();
 
-        // Save the user details to localStorage or a database
-        // Here, we'll just log the details to the console
         const usernamePattern = /^[a-zA-Z0-9_]{4,}$/;
         const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
 
-        if (username === usernamePattern && password === passwordPattern) {
+        if (usernamePattern.test(username) && passwordPattern.test(password)) {
+            // Save the user details to localStorage or a database
+            // Here, we'll just log the details to the console
+            console.log('New user signed up:', { username, password });
+
             // Set the isLoggedIn state to true
             // Save the authentication token to localStorage or session storage
             localStorage.setItem('token', 'your_auth_token');
-            // Redirect to the home page after successful login
+            // Redirect to the home page after successful signup
             navigate('/');
         } else {
             // Clear the username and password fields
@@ -27,8 +29,6 @@ function Signup() {
             // Show an error message or perform any other error handling
             console.log('Invalid credentials');
         }
-
-        console.log('New user signed up:', { username, password });
 
         // Clear the form fields
         setUsername('');
