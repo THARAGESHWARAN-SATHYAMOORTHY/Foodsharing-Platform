@@ -4,9 +4,7 @@ import axios from 'axios';
 import Login from './Login';
 import Signup from './Signup';
 import Donation from './Donation';
-import FoodItems from './FoodItems';
 import CreateFoodItem from './CreateFoodItem';
-import FoodItemsPage from './FoodItemsPage';
 
 function Home() {
   return (
@@ -79,7 +77,7 @@ function App() {
                   <Link to="/users">Profile</Link>
                 </li>
                 <li>
-                  <Link to="/fooditems">Food Items</Link>
+                  <Link to="/fooditems/create">Food Items</Link>
                 </li>
                 <li>
                   <Link to="/donations">Donations</Link>
@@ -100,8 +98,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/users/*" element={<Users />} />
           <Route path="/users/create" element={<CreateUser />} />
-          <Route exact path="/fooditems" element={<FoodItemsPage />} />
-          <Route path="/fooditems/" element={<FoodItems />} />
           <Route path="/fooditems/create" element={<CreateFoodItem />} />
           <Route path="/donations" element={<Donation />} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
