@@ -5,14 +5,13 @@ import './CreateFoodItem.css'; // Import the CSS file for table styling
 
 function CreateFoodItem() {
     const navigate = useNavigate();
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [type, setType] = useState('');
-    const [expiryDate, setExpiryDate] = useState('');
-    const [manufactureDate, setManufactureDate] = useState('');
+    const [username, setUsername] = useState('');
+    const [foodName, setFoodName] = useState('');
+    const [foodType, setFoodType] = useState('');
     const [allergyAlerts, setAllergyAlerts] = useState('');
+    const [expiryDate, setExpiryDate] = useState('');
+    const [contactNumber, setContactNumber] = useState('');
     const [location, setLocation] = useState('');
-    const [contactDetails, setContactDetails] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [foodItems, setFoodItems] = useState([]);
 
@@ -20,41 +19,40 @@ function CreateFoodItem() {
         fetchFoodItems();
     }, []); // Fetch food items on component mount
 
-    const handleCreateFoodItem = (e) => {
-        e.preventDefault();
+    const handleCreateFoodItem = (event) => {
+        event.preventDefault();
 
-        const newFoodItem = {
-            name,
-            description,
-            type,
-            expiryDate,
-            manufactureDate,
-            allergyAlerts,
-            location,
-            contactDetails,
+        const formData = new FormData(event.target);
+
+        const foodItem = {
+            username: formData.get('username'),
+            foodName: formData.get('foodName'),
+            foodType: formData.get('foodType'),
+            allergyAlerts: formData.get('allergyAlerts'),
+            expiryDate: formData.get('expiryDate'),
+            contactNumber: formData.get('contactNumber'),
+            location: formData.get('location'),
         };
 
         axios
-            .post('/frontend/fooditems/', newFoodItem)
+            .post('/api/fooditems', foodItem)
             .then((response) => {
-                // Handle successful creation of food item
                 console.log('Food item created:', response.data);
-
-                // Clear the form fields
-                setName('');
-                setDescription('');
-                setType('');
-                setExpiryDate('');
-                setManufactureDate('');
-                setAllergyAlerts('');
-                setLocation('');
-                setContactDetails('');
-
-                // Display success message
                 setSuccessMessage('Food item created successfully.');
 
-                // Update the list of food items
-                setFoodItems([...foodItems, response.data]);
+                // Update the table with the newly created food item
+                setFoodItems((prevFoodItems) => [...prevFoodItems, response.data]);
+
+                // Reset form inputs
+                setUsername('');
+                setFoodName('');
+                setFoodType('');
+                setAllergyAlerts('');
+                setExpiryDate('');
+                setContactNumber('');
+                setLocation('');
+
+                navigate(`/fooditems/${response.data.id}`);
             })
             .catch((error) => {
                 console.error('Error creating food item:', error);
@@ -63,7 +61,7 @@ function CreateFoodItem() {
 
     const fetchFoodItems = () => {
         axios
-            .get('/frontend/fooditems')
+            .get('/api/fooditems')
             .then((response) => {
                 setFoodItems(response.data);
             })
@@ -78,48 +76,30 @@ function CreateFoodItem() {
             {successMessage && <p>{successMessage}</p>}
             <form onSubmit={handleCreateFoodItem}>
                 <div>
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="username">Username:</label>
                     <input
                         type="text"
-                        id="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label htmlFor="description">Description:</label>
+                    <label htmlFor="foodName">Food Name:</label>
                     <input
                         type="text"
-                        id="description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        id="foodName"
+                        value={foodName}
+                        onChange={(e) => setFoodName(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label htmlFor="type">Type:</label>
+                    <label htmlFor="foodType">Food Type:</label>
                     <input
                         type="text"
-                        id="type"
-                        value={type}
-                        onChange={(e) => setType(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="expiryDate">Expiry Date:</label>
-                    <input
-                        type="text"
-                        id="expiryDate"
-                        value={expiryDate}
-                        onChange={(e) => setExpiryDate(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="manufactureDate">Manufacture Date:</label>
-                    <input
-                        type="text"
-                        id="manufactureDate"
-                        value={manufactureDate}
-                        onChange={(e) => setManufactureDate(e.target.value)}
+                        id="foodType"
+                        value={foodType}
+                        onChange={(e) => setFoodType(e.target.value)}
                     />
                 </div>
                 <div>
@@ -132,6 +112,24 @@ function CreateFoodItem() {
                     />
                 </div>
                 <div>
+                    <label htmlFor="expiryDate">Expiry Date:</label>
+                    <input
+                        type="text"
+                        id="expiryDate"
+                        value={expiryDate}
+                        onChange={(e) => setExpiryDate(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="contactNumber">Contact Number:</label>
+                    <input
+                        type="text"
+                        id="contactNumber"
+                        value={contactNumber}
+                        onChange={(e) => setContactNumber(e.target.value)}
+                    />
+                </div>
+                <div>
                     <label htmlFor="location">Location:</label>
                     <input
                         type="text"
@@ -140,52 +138,9 @@ function CreateFoodItem() {
                         onChange={(e) => setLocation(e.target.value)}
                     />
                 </div>
-                <div>
-                    <label htmlFor="contactDetails">Contact Details:</label>
-                    <input
-                        type="text"
-                        id="contactDetails"
-                        value={contactDetails}
-                        onChange={(e) => setContactDetails(e.target.value)}
-                    />
-                </div>
                 <button type="submit">Create Food Item</button>
             </form>
             <Link to="/fooditems">Back to Food Items</Link>
-
-            <h2>Food Items</h2>
-            <table className="food-items-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Type</th>
-                        <th>Expiry Date</th>
-                        <th>Manufacture Date</th>
-                        <th>Allergy Alerts</th>
-                        <th>Location</th>
-                        <th>Contact Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {foodItems.map((foodItem) => (
-                        <tr key={foodItem.id}>
-                            <td>{foodItem.name}</td>
-                            <td>{foodItem.description}</td>
-                            <td>{foodItem.type}</td>
-                            <td>{foodItem.expiryDate}</td>
-                            <td>{foodItem.manufactureDate}</td>
-                            <td>{foodItem.allergyAlerts}</td>
-                            <td>{foodItem.location}</td>
-                            <td>
-                                <a href={`mailto:${foodItem.contactDetails}`}>
-                                    Contact User
-                                </a>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
         </div>
     );
 }

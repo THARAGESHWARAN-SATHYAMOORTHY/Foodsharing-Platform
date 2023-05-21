@@ -6,6 +6,7 @@ import Signup from './Signup';
 import Donation from './Donation';
 import FoodItems from './FoodItems';
 import CreateFoodItem from './CreateFoodItem';
+import FoodItemsPage from './FoodItemsPage';
 
 function Home() {
   return (
@@ -27,7 +28,7 @@ function Users() {
 
   return (
     <div>
-      <h2>Users</h2>
+      <h2>Profile</h2>
       <ul>
         {users.map((user) => (
           <li key={user.id}>
@@ -35,7 +36,7 @@ function Users() {
           </li>
         ))}
       </ul>
-      <Link to="/users/create">Create User</Link>
+      <Link to="/users/create">Update profile</Link>
     </div>
   );
 }
@@ -43,8 +44,8 @@ function Users() {
 function CreateUser() {
   return (
     <div>
-      <h2>Create User</h2>
-      <p>Form to create a new user goes here</p>
+      <h2>Profile Update</h2>
+      <p>Details updated</p>
     </div>
   );
 }
@@ -75,7 +76,7 @@ function App() {
             {isLoggedIn ? (
               <>
                 <li>
-                  <Link to="/users">Users</Link>
+                  <Link to="/users">Profile</Link>
                 </li>
                 <li>
                   <Link to="/fooditems">Food Items</Link>
@@ -99,6 +100,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/users/*" element={<Users />} />
           <Route path="/users/create" element={<CreateUser />} />
+          <Route exact path="/fooditems" element={<FoodItemsPage />} />
           <Route path="/fooditems/" element={<FoodItems />} />
           <Route path="/fooditems/create" element={<CreateFoodItem />} />
           <Route path="/donations" element={<Donation />} />
