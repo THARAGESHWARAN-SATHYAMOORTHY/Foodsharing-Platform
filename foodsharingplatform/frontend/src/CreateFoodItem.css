@@ -1,0 +1,63 @@
+/* CreateFoodItem.css */
+
+/* Form styles */
+form {
+    margin-bottom: 20px;
+  }
+  
+  form input {
+    display: block;
+    margin-bottom: 10px;
+    width: 300px;
+  }
+
+  .contact-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .contact-container select {
+    margin-right: 5px;
+  }
+  
+  
+  form button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Table styles */
+  .food-items-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .food-items-table th,
+  .food-items-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .food-items-table th {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .food-items-table tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Link styles */
+  a {
+    color: #4caf50;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
