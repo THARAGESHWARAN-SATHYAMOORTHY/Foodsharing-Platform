@@ -41,7 +41,7 @@ function CreateFoodItem() {
             .post('/api/fooditems/create', foodItem)
             .then((response) => {
                 console.log('Food item created:', response.data);
-                alert("SUCESSFUL!");
+                alert("SUCCESSFUL!");
                 setSuccessMessage('Food item created successfully.');
 
                 // Update the table with the newly created food item
@@ -61,6 +61,7 @@ function CreateFoodItem() {
             .catch((error) => {
                 console.error('Error creating food item:', error);
             });
+
     };
 
     const fetchFoodItems = () => {
@@ -90,6 +91,7 @@ function CreateFoodItem() {
                 <FoodItemDetails foodItem={selectedFoodItem} />
             ) : (
                 <div>
+                    <h2>Food You Can Grap</h2>
                     <h2>Create Food Item</h2>
                     {successMessage && <p>{successMessage}</p>}
                     <form onSubmit={handleCreateFoodItem}>
@@ -195,109 +197,5 @@ function CreateFoodItem() {
     );
 }
 
-function FoodItemDetails({ foodItem }) {
-    const [foodName, setFoodName] = useState(foodItem.foodName);
-    const [foodType, setFoodType] = useState(foodItem.foodType);
-    const [allergyAlerts, setAllergyAlerts] = useState(foodItem.allergyAlerts);
-    const [expiryDate, setExpiryDate] = useState(foodItem.expiryDate);
-    const [contactNumber, setContactNumber] = useState(foodItem.contactNumber);
-    const [location, setLocation] = useState(foodItem.location);
-
-    const handleFoodNameChange = (e) => {
-        setFoodName(e.target.value);
-    };
-
-    const handleFoodTypeChange = (e) => {
-        setFoodType(e.target.value);
-    };
-
-    const handleAllergyAlertsChange = (e) => {
-        setAllergyAlerts(e.target.value);
-    };
-
-    const handleExpiryDateChange = (e) => {
-        setExpiryDate(e.target.value);
-    };
-
-    const handleContactNumberChange = (e) => {
-        setContactNumber(e.target.value);
-    };
-
-    const handleLocationChange = (e) => {
-        setLocation(e.target.value);
-    };
-
-    const handleUpdate = () => {
-        // Implement the update functionality using the updated values
-        console.log('Updating food item...');
-    };
-
-    const handleDelete = () => {
-        // Implement the delete functionality
-        console.log('Deleting food item...');
-    };
-
-    return (
-        <div>
-            <h2>Food Item Details</h2>
-            <div>
-                <label htmlFor="foodName">Food Name:</label>
-                <input
-                    type="text"
-                    id="foodName"
-                    value={foodName}
-                    onChange={handleFoodNameChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="foodType">Food Type:</label>
-                <input
-                    type="text"
-                    id="foodType"
-                    value={foodType}
-                    onChange={handleFoodTypeChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="allergyAlerts">Allergy Alerts:</label>
-                <input
-                    type="text"
-                    id="allergyAlerts"
-                    value={allergyAlerts}
-                    onChange={handleAllergyAlertsChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="expiryDate">Expiry Date:</label>
-                <input
-                    type="datetime-local"
-                    id="expiryDate"
-                    value={expiryDate}
-                    onChange={handleExpiryDateChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="contactNumber">Contact Number:</label>
-                <input
-                    type="text"
-                    id="contactNumber"
-                    value={contactNumber}
-                    onChange={handleContactNumberChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="location">Location:</label>
-                <input
-                    type="text"
-                    id="location"
-                    value={location}
-                    onChange={handleLocationChange}
-                />
-            </div>
-            <button onClick={handleUpdate}>Update</button>
-            <button onClick={handleDelete}>Delete</button>
-        </div>
-    );
-}
 
 export default CreateFoodItem;
