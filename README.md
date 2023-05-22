@@ -16,7 +16,7 @@ The Food Sharing Platform is a web application that aims to connect individuals 
 
 - Backend: Django, Django REST Framework
 - Frontend: React
-- Database: PostgreSQL
+- Database: MySQL
 - Other Technologies: HTML, CSS, JavaScript, Axios (for API requests)
 
 ## Installation and Setup
