@@ -2,6 +2,87 @@
 
 /* Form styles */
 
+.create-food-item-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  color: green;
+  margin-bottom: 10px;
+}
+
+.create-food-item-form {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 4px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.create-food-item-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.contact-number-container {
+  display: flex;
+  align-items: center;
+}
+
+.contact-number-code {
+  margin-right: 4px;
+  margin-bottom: 10px;
+}
+
+.contact-number-input {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.address-option-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.current-location-info {
+  margin-bottom: 10px;
+}
+
+.location-toggle-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-food-item-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.create-food-item-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
 .options-container {
   display: flex;
   justify-content: flex-end;

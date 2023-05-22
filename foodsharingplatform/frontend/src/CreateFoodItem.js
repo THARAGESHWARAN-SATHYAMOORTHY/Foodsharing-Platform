@@ -90,9 +90,9 @@ function CreateFoodItem() {
                 <FoodItemDetails foodItem={selectedFoodItem} />
             ) : (
                 <div>
-                    <h2>Create Food Item</h2>
-                    {successMessage && <p>{successMessage}</p>}
-                    <form onSubmit={handleCreateFoodItem}>
+                    <h2 className="create-food-item-title">Create Food Item</h2>
+                    {successMessage && <p className="success-message">{successMessage}</p>}
+                    <form onSubmit={handleCreateFoodItem} className="create-food-item-form">
                         <div>
                             <label htmlFor="username">Username:</label>
                             <input
@@ -100,6 +100,7 @@ function CreateFoodItem() {
                                 id="username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
+                                className="create-food-item-input"
                             />
                         </div>
                         <div>
@@ -109,6 +110,7 @@ function CreateFoodItem() {
                                 id="foodName"
                                 value={foodName}
                                 onChange={(e) => setFoodName(e.target.value)}
+                                className="create-food-item-input"
                             />
                         </div>
                         <div>
@@ -119,6 +121,7 @@ function CreateFoodItem() {
                                 list="foodOptions"
                                 value={foodType}
                                 onChange={(e) => setFoodType(e.target.value)}
+                                className="create-food-item-input"
                             />
                             <datalist id="foodOptions">
                                 <option value="Vegetarian"></option>
@@ -133,6 +136,7 @@ function CreateFoodItem() {
                                 id="allergyAlerts"
                                 value={allergyAlerts}
                                 onChange={(e) => setAllergyAlerts(e.target.value)}
+                                className="create-food-item-input"
                             />
                         </div>
                         <div>
@@ -142,13 +146,14 @@ function CreateFoodItem() {
                                 id="expiryDate"
                                 value={expiryDate}
                                 onChange={(e) => setExpiryDate(e.target.value)}
+                                className="create-food-item-input"
                             />
                         </div>
                         <div>
                             <label htmlFor="contactNumber">Contact Number:</label>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <div className="contact-number-container">
                                 <select
-                                    style={{ marginRight: '4px', marginBottom: '10px' }}
+                                    className="contact-number-code"
                                     onChange={(e) => setContactNumberCode(e.target.value)}
                                 >
                                     <option value="+1">+1</option>
@@ -162,33 +167,48 @@ function CreateFoodItem() {
                                     onChange={(e) => setContactNumber(e.target.value)}
                                     pattern="\d{10}"
                                     title="Please enter a 10-digit phone number"
-                                    style={{ display: 'flex', alignItems: 'center', marginRight: '5px' }}
+                                    className="contact-number-input"
                                 />
                             </div>
                         </div>
                         <div>
                             <label htmlFor="location">Location:</label>
                             {useCurrentLocation ? (
-                                <p>Current Location is added {navigator.geolocation.getCurrentPosition((position) => position.coords.latitude + ', ' + position.coords.longitude)}</p>
+                                <p className="current-location-info">
+                                    Current Location is added {navigator.geolocation.getCurrentPosition((position) => position.coords.latitude + ', ' + position.coords.longitude)}
+                                </p>
                             ) : (
                                 <div>
-                                    <select value={addressOption} onChange={handleAddressOptionChange}>
+                                    <select value={addressOption} onChange={handleAddressOptionChange} className="address-option-select">
                                         <option value="">Select Address Option</option>
                                         <option value="option1">Option 1</option>
                                         <option value="option2">Option 2</option>
                                         <option value="option3">Option 3</option>
                                     </select>
-                                    {addressOption && <input type="text" id="location" value={location} onChange={(e) => setLocation(e.target.value)} />}
+                                    {addressOption && (
+                                        <input
+                                            type="text"
+                                            id="location"
+                                            value={location}
+                                            onChange={(e) => setLocation(e.target.value)}
+                                            className="location-input"
+                                        />
+                                    )}
                                 </div>
                             )}
-                            <button type="button" onClick={handleLocationToggle}>
+                            <button type="button" onClick={handleLocationToggle} className="location-toggle-button">
                                 {useCurrentLocation ? 'Use Manual Location' : 'Use Current Location'}
                             </button>
                         </div>
-                        <button type="submit" disabled={!username || !foodName || !foodType || !expiryDate || !contactNumber || (!useCurrentLocation && !location)}>
+                        <button
+                            type="submit"
+                            disabled={!username || !foodName || !foodType || !expiryDate || !contactNumber || (!useCurrentLocation && !location)}
+                            className="create-food-item-button"
+                        >
                             Create Food Item
                         </button>
                     </form>
+
                     <div className="food-details">
                         <div className="options-container">
                             <div className="options-dots"></div>
