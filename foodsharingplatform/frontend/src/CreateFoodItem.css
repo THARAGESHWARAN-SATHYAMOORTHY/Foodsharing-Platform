@@ -2,6 +2,13 @@
 
 /* Form styles */
 
+
+
+.create-food-item-form-container {
+  margin-bottom: 50px;
+}
+
+
 .create-food-item-title {
   font-size: 24px;
   text-align: center;
@@ -123,6 +130,8 @@
   background-color: #27e9ff;
   padding: 10px;
   color: #fff;
+  margin-top: 50px; 
+  align-content: center;
 }
 
 /* Rest of the CSS code */
@@ -195,18 +204,18 @@
 }
 
 .food-details-container {
-  display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 10px; 
+  margin-bottom: 1000;
 }
 
 .food-details {
-  width: 900px;
+  width: 1230px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #0c0b0b;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: #ffdcdc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import './Login.css'
 
 
 function Login({ setIsLoggedIn }) {
@@ -32,7 +33,7 @@ function Login({ setIsLoggedIn }) {
     };
 
     return (
-        <div>
+        <div className="login-container">
             <h2>Login</h2>
             <form onSubmit={handleLogin}>
                 <div>
@@ -59,6 +60,7 @@ function Login({ setIsLoggedIn }) {
                 <button type="submit">Login</button>
             </form>
         </div>
+
     );
 }
 

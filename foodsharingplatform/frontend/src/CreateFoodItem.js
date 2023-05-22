@@ -156,8 +156,8 @@ function CreateFoodItem() {
                                     className="contact-number-code"
                                     onChange={(e) => setContactNumberCode(e.target.value)}
                                 >
-                                    <option value="+1">+1</option>
-                                    <option value="+91">+91</option>
+                                    <option value="+91">+1</option>
+                                    <option value="+1">+91</option>
                                     <option value="+44">+44</option>
                                 </select>
                                 <input
@@ -217,7 +217,7 @@ function CreateFoodItem() {
                                 <p className="option">Edit Post</p>
                             </div>
                         </div>
-                        <h2 className="heading" style={{ fontSize: '40px', textAlign: 'center', backgroundColor: '#27e9ff', padding: '10px' }}>
+                        <h2 className="heading" style={{ fontSize: '40px', textAlign: 'center', backgroundColor: '#27e9ff', padding: '10px', width: 1220 }}>
                             Food You Can Grab
                         </h2>
                         <div className="food-details-container">

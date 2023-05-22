@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './Donation.css';
 
 function Donation() {
     const [donationAmount, setDonationAmount] = useState('');
@@ -42,16 +43,16 @@ function Donation() {
     };
 
     return (
-        <div>
+        <div className="donation-container">
             <h2>Make a Donation</h2>
             {donated ? (
-                <div>
+                <div className="donation-success">
                     <p>Thank you for your generous donation!</p>
                     <p>Your contribution helps those in need.</p>
                     <Link to="/">Back to Home</Link>
                 </div>
             ) : (
-                <div>
+                <div className="donation-form">
                     <p>Please select a donation amount:</p>
                     <input
                         type="number"
@@ -60,16 +61,8 @@ function Donation() {
                         onChange={handleAmountChange}
                     />
                     <p>Card Details:</p>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-                            <label htmlFor="cardType">Card Type:</label>
-                            <select id="cardType" value={cardType} onChange={handleCardTypeChange}>
-                                <option value="Credit">Credit</option>
-                                <option value="Debit">Debit</option>
-                                <option value="Prepaid">Prepaid</option>
-                            </select>
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                    <div className="card-container">
+                        <div className="card-number">
                             <label htmlFor="cardNumber">Card Number:</label>
                             <input
                                 type="text"
@@ -79,30 +72,41 @@ function Donation() {
                                 onChange={handleCardNumberChange}
                             />
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-                            <label htmlFor="expiryDate">Expiry Date:</label>
-                            <input
-                                type="datetime-local"
-                                id="expiryDate"
-                                value={expiryDate}
-                                onChange={(e) => setExpiryDate(e.target.value)}
-                            />
+                        <div className="card-info">
+                            <div className="card-type">
+                                <label htmlFor="cardType">Card Type:</label>
+                                <select id="cardType" value={cardType} onChange={handleCardTypeChange}>
+                                    <option value="Credit">Credit</option>
+                                    <option value="Debit">Debit</option>
+                                    <option value="Prepaid">Prepaid</option>
+                                </select>
+                            </div>
+                            <div className="expiry-date">
+                                <label htmlFor="expiryDate">Expiry Date:</label>
+                                <input
+                                    type="datetime-local"
+                                    id="expiryDate"
+                                    value={expiryDate}
+                                    onChange={(e) => setExpiryDate(e.target.value)}
+                                />
+                            </div>
+                            <div className="cvv">
+                                <label htmlFor="cvv">CVV:</label>
+                                <input
+                                    type="number"
+                                    id="cvv"
+                                    placeholder="CVV"
+                                    value={cvv}
+                                    onChange={handleCVVChange}
+                                />
+                            </div>
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-                            <label htmlFor="cvv">CVV:</label>
-                            <input
-                                type="number"
-                                id="cvv"
-                                placeholder="CVV"
-                                value={cvv}
-                                onChange={handleCVVChange}
-                            />
-                        </div>
-                        <button onClick={handleDonation}>Donate</button>
                     </div>
+                    <button onClick={handleDonation}>Donate</button>
                 </div>
             )}
         </div>
+
     );
 }
 

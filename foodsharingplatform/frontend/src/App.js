@@ -6,6 +6,7 @@ import Signup from './Signup';
 import Donation from './Donation';
 import CreateFoodItem from './CreateFoodItem';
 import imageSrc from './home.jpg';
+import imageSrc1 from './profile.png';
 import './App.css';
 
 function Home() {
@@ -15,6 +16,8 @@ function Home() {
       <p style={{ fontSize: '20px', textAlign: 'center' }}>Welcome To The Food Sharing Platform!</p>
       <p style={{ fontSize: '20px', textAlign: 'center' }}>We Share More Than Just A Meal; We Share Stories, Laughter, And Love</p>
       <img src={imageSrc} alt="Description of the image" width="800" height="250" style={{ display: 'block', margin: '0 auto' }} />
+      <p style={{ fontSize: '20px', textAlign: 'center' }}>contact  : cutomer-care@gmail.com</p>
+      <p style={{ fontSize: '20px', textAlign: 'center' }}>telephone: 123-456-7890</p>
     </div>
   );
 }
@@ -38,6 +41,7 @@ function Users() {
           </li>
         ))}
       </ul>
+      <img src={imageSrc1} alt="Description of the image" width="200" height="200" style={{ display: 'block', margin: '0 auto' }} />
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Link to="/users/create" >Update profile</Link>
       </div>
@@ -170,9 +174,10 @@ function App() {
                 </li>
               </>
             ) : (
-              <li>
+              <div style={{ display: 'flex', justifyContent: 'center', fontSize: '20px' }}><li>
                 <Link to="/login">Login</Link>
-              </li>
+              </li></div>
+
             )}
           </ul>
         </nav>
