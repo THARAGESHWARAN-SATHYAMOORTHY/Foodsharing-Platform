@@ -20,7 +20,7 @@ The Food Sharing Platform is a web application that aims to connect individuals 
 - Database: MySQL
 - Other Technologies: HTML, CSS, JavaScript, Axios (for API requests)
 
-## Intial Project Setup
+## Intial Project Setup (Manual Method)
 
 The step-by-step process to create a folder, set up the project, and execute it using pnpm.
 
