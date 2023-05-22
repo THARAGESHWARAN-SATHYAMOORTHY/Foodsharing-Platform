@@ -41,7 +41,7 @@ function CreateFoodItem() {
             .post('/api/fooditems/create', foodItem)
             .then((response) => {
                 console.log('Food item created:', response.data);
-                alert("SUCCESSFUL!");
+                alert('SUCCESSFUL!');
                 setSuccessMessage('Food item created successfully.');
 
                 // Update the table with the newly created food item
@@ -61,7 +61,6 @@ function CreateFoodItem() {
             .catch((error) => {
                 console.error('Error creating food item:', error);
             });
-
     };
 
     const fetchFoodItems = () => {
@@ -91,7 +90,6 @@ function CreateFoodItem() {
                 <FoodItemDetails foodItem={selectedFoodItem} />
             ) : (
                 <div>
-                    <h2>Food You Can Grap</h2>
                     <h2>Create Food Item</h2>
                     {successMessage && <p>{successMessage}</p>}
                     <form onSubmit={handleCreateFoodItem}>
@@ -149,7 +147,10 @@ function CreateFoodItem() {
                         <div>
                             <label htmlFor="contactNumber">Contact Number:</label>
                             <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <select style={{ marginRight: '4px', marginBottom: '10px' }} onChange={(e) => setContactNumberCode(e.target.value)}>
+                                <select
+                                    style={{ marginRight: '4px', marginBottom: '10px' }}
+                                    onChange={(e) => setContactNumberCode(e.target.value)}
+                                >
                                     <option value="+1">+1</option>
                                     <option value="+91">+91</option>
                                     <option value="+44">+44</option>
@@ -183,19 +184,58 @@ function CreateFoodItem() {
                             <button type="button" onClick={handleLocationToggle}>
                                 {useCurrentLocation ? 'Use Manual Location' : 'Use Current Location'}
                             </button>
-
                         </div>
                         <button type="submit" disabled={!username || !foodName || !foodType || !expiryDate || !contactNumber || (!useCurrentLocation && !location)}>
                             Create Food Item
                         </button>
-
                     </form>
-                    <Link to="/fooditems">Back to Food Items</Link>
+                    <div className="food-details">
+                        <div className="options-container">
+                            <div className="options-dots"></div>
+                            <div className="options-dropdown">
+                                <p className="option">Delete Post</p>
+                                <p className="option">Edit Post</p>
+                            </div>
+                        </div>
+                        <h2 className="heading" style={{ fontSize: '40px', textAlign: 'center', backgroundColor: '#27e9ff', padding: '10px' }}>
+                            Food You Can Grab
+                        </h2>
+                        <div className="food-details-container">
+                            <div className="food-details">
+                                <p className="food-detail">
+                                    <span className="detail-label">Username:</span> {username}
+                                </p>
+                                <p className="food-detail">
+                                    <span className="detail-label">Food Name:</span> {foodName}
+                                </p>
+                                <p className="food-detail">
+                                    <span className="detail-label">Food Type:</span> {foodType}
+                                </p>
+                                <p className="food-detail">
+                                    <span className="detail-label">Allergy Alerts:</span> {allergyAlerts}
+                                </p>
+                                <p className="food-detail">
+                                    <span className="detail-label">Expiry Date:</span> {expiryDate}
+                                </p>
+                                <p className="food-detail">
+                                    <span className="detail-label">Contact Number:</span> {contactNumber} <span className="contact-icon">✉</span>
+                                </p>
+                                <p className="food-detail">
+                                    <span className="detail-label">Location:</span> {location} <span className="location-icon">📍</span>
+                                </p>
+                                <div className="like-section">
+                                    <span className="like-icon">❤️</span>
+                                    <p className="like-count">25 Likes</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             )}
         </div>
     );
 }
-
 
 export default CreateFoodItem;
