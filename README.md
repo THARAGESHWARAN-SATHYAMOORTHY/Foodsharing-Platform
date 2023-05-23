@@ -108,7 +108,7 @@ When creating a food sharing platform, it's important to thoroughly test the app
 
 ## Video Demonstration
 
-Youtube : https://github.com/THARAGESHWARAN-SATHYAMOORTHY/foodsharing-platform
+Youtube : https://youtu.be/d1FUS0wDLr0
 
 ## Future Enhancements
 
