@@ -9,12 +9,13 @@ body {
   width: 1270px;
   height: 90000070px;
   background-size: 1270px 570px;
+  background-image: linear-gradient(rgb(37, 198, 179), yellow);
 }
 
 
 .header {
   text-align: center;
-  background-color: #27e9ff;
+  background-color: #4cd6d8;
   padding: 15px;
 }
 

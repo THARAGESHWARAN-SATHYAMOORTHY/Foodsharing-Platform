@@ -25,7 +25,7 @@
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 4px;
-  width: 400px;
+  width: 500px;
   margin: 0 auto;
 }
 
@@ -56,7 +56,7 @@
 .address-option-select {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #bb6161;
   border-radius: 4px;
   margin-bottom: 10px;
 }
@@ -215,8 +215,9 @@
   padding: 20px;
   border: 1px solid #0c0b0b;
   border-radius: 4px;
-  background-color: #ffdcdc;
+  background-color: #a93838;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(rgb(228, 230, 107), rgb(90, 198, 200));
 }
 
 .food-detail {
