@@ -51,14 +51,14 @@ function Users() {
 
 function CreateUser() {
   const [userDetails, setUserDetails] = useState({
-    username: 'JohnDoe',
-    firstName: 'John',
-    lastName: 'Doe',
+    username: 'Tharagesh',
+    firstName: 'Tharagesh',
+    lastName: 'Waran',
     middleName: 'Smith',
     password: '********',
     dateOfBirth: '1990-01-01',
     address: '123 Main St, City',
-    email: 'johndoe@example.com',
+    email: 'Tharagesh@example.com',
     phoneNumber: '123-456-7890',
   });
 
