@@ -2,7 +2,7 @@
 
 # Food Sharing Platform
 
-The Food Sharing Platform is a web application that aims to connect individuals and businesses with surplus food to those in need. The platform provides a convenient way for users to donate excess food items or request meals, facilitating the coordination, pickup, and delivery of the food. It also incorporates features like nutritional information and allergy alerts to ensure the safety and suitability of the donated food.
+The Food Sharing Platform is a web application that aims to connect individuals and businesses with surplus food to those in need. The platform provides a convenient way for users to donate excess food items or request meals, facilitating the coordination, pickup, and delivery of the food. It also incorporates features like nutritional information and allergy alerts to ensure the safety and suitability of the donated food!
 
 ## Features
 
