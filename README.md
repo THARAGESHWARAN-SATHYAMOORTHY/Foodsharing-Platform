@@ -1,4 +1,4 @@
-IIT Bombay Internship Regarding 
+#OPEN SOURCE
 
 # Food Sharing Platform
 
