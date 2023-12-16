@@ -1,4 +1,4 @@
-#OPEN SOURCE
+#OPENSOURCE
 
 # Food Sharing Platform
 
